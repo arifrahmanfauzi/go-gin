@@ -1,0 +1,36 @@
+# .air.toml
+root = "."
+tmp_dir = "tmp"
+[build]
+bin = "tmp/main"
+cmd = "go build -o ./tmp/main.exe ./cmd/main.go"
+include_ext = ["go", "tmpl", "html"]
+exclude_dir = ["vendor", "tmp"]
+exclude_file = []
+follow_symlink = true
+delay = 2000
+full_bin = ""
+
+[log]
+level = "debug"
+color = true
+timestamp = false
+
+[run]
+cmd = "./tmp/main"
+watch_dir = ["."]
+watch_ext = ["go", "tmpl", "html"]
+ignore_dir = ["assets", "tmp", "vendor"]
+ignore_file = []
+delay = 1000
+grace = 2000
+kill_signal = "kill"
+output = "stdout"
+errput = "stderr"
+
+[color]
+main = "yellow"
+watcher = "cyan"
+building = "green"
+running = "blue"
+log = "purple"
