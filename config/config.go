@@ -10,7 +10,7 @@ import (
 )
 
 func ConnectMongoDB() (*mongo.Client, error) {
-	client, err := mongo.NewClient(options.Client().ApplyURI("mongodb://root:Kebersamaan%401@localhost:27018/?directConnection=true&authSource=admin"))
+	client, err := mongo.NewClient(options.Client().ApplyURI("mongodb://localhost:27018/?directConnection=true"))
 	if err != nil {
 		return nil, err
 	}

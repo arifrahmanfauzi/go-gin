@@ -1,8 +1,8 @@
 package main
 
 import (
-	"go-starter/config"
-	"go-starter/routes"
+	"go-gin/config"
+	"go-gin/routes"
 	"log"
 
 	"github.com/gin-gonic/gin"
