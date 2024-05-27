@@ -3,7 +3,7 @@ root = "."
 tmp_dir = "tmp"
 [build]
 bin = "tmp/main"
-cmd = "go build -o ./tmp/main.exe ./cmd/main.go"
+cmd = "go build -o ./tmp/main ./cmd/main.go"
 include_ext = ["go", "tmpl", "html"]
 exclude_dir = ["vendor", "tmp"]
 exclude_file = []

@@ -2,7 +2,7 @@ package controllers
 
 import (
 	"context"
-	"go-starter/repositories"
+	"go-gin/repositories"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -15,6 +15,19 @@ func GetDrops(c *gin.Context) {
 	dropRepo := repositories.NewDropRepository(client)
 
 	drops, err := dropRepo.GetAllDrops(context.Background())
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, drops)
+}
+func GetAggregateDrops(c *gin.Context) {
+	db, _ := c.Get("db")
+	client := db.(*mongo.Client)
+	dropRepo := repositories.NewDropRepository(client)
+
+	drops, err := dropRepo.FetchDrops(context.Background())
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
